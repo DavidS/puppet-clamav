@@ -36,9 +36,10 @@ group :development do
 end
 
 group :system_tests do
-  # gem 'vagrant-wrapper', :require => false
-  gem 'beaker-rspec',    :require => false
-  gem 'serverspec',      :require => false
+  # gem 'vagrant-wrapper',               :require => false
+  gem 'beaker-rspec',                  :require => false
+  gem 'serverspec',                    :require => false
+  gem 'beaker-puppet_install_helper',  :require => false
 end
 
 if (facterversion = ENV['FACTER_GEM_VERSION'])
@@ -50,7 +51,7 @@ end
 if (puppetversion = ENV['PUPPET_GEM_VERSION'])
   gem 'puppet', puppetversion, :require => false
 else
-  gem 'puppet', '~> 3.8', :require => false
+  gem 'puppet', :require => false
 end
 
 # vim:ft=ruby

@@ -142,14 +142,14 @@ clamav::freshclam_options:
 
 ##Limitations
 
-This module has been built on and tested against Puppet 3.2.4 and higher.  
-While I am sure other versions work, I have not tested them.
+This module is tested against the latest Puppet 3 and Puppet 4 versions.
+While I am sure other versions work, other versions are not used for the automated tests on travis-ci.
 
 This module supports modern RedHat and Debian based systems.  
-This module has been tested on Oracle Linux 6.x and Ubuntu 12.04.
+Every commit to this module is being tested on CentOS 7.x and Ubuntu 14.04.
 
 No plans to support other versions (unless you add it :)..
 
 ##Development
 
-Pull Requests welcome
+Pull Requests welcome. Please make sure that they pass the tests on travis-ci.
