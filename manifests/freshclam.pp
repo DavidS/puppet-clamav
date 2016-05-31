@@ -35,6 +35,18 @@ class clamav::freshclam {
       hasstatus  => true,
       subscribe  => File['freshclam.conf'],
     }
+
+    # freshclam needs time to download the patterns, but clamd will not start without patterns.
+    # Instead of failing clamav-daemon, we wait for this to finish
+    exec { 'wait-for-freshclam':
+      command => "/bin/bash -c 'while [ ! -e /var/lib/clamav/daily.cvd ]; do sleep 1; done'",
+      creates => '/var/lib/clamav/daily.cvd',
+      require => Service['freshclam'],
+    }
+  }
+
+  if $clamav::manage_clamd and $clamav::freshclam_service {
+    Exec['wait-for-freshclam'] -> Service['clamd']
   }
 
   if $clamav::freshclam_package and $clamav::freshclam_service {

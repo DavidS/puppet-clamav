@@ -34,7 +34,8 @@ describe 'clamav' do
     it 'should work idempotently with no errors' do
       pp = <<-EOS
       class { 'clamav':
-        manage_clamd => true,
+        manage_clamd     => true,
+        manage_freshclam => true,
       }
       EOS
 
